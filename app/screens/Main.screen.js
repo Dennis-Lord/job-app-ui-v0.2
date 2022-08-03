@@ -1,5 +1,5 @@
-// import { Dimensions, Image, StyleSheet, View } from 'react-native'
-// import React from 'react'
+import { Dimensions, Image, StyleSheet, View } from 'react-native'
+import React from 'react'
 // import NavBtn from '../components/nav_btn.component'
 // import ScrollableSheet from './Scrollable.sheet'
 // // import Icon from 'react-native-vector-icons/FontAwesome'\
