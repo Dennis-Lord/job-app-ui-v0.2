@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "46844007905",
+    "project_id": "job-app-ui-v2",
+    "storage_bucket": "job-app-ui-v2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46844007905:android:b607fda6deee276d45aea0",
+        "android_client_info": {
+          "package_name": "com.dennis.jobappuiv2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "46844007905-l52m7papjefq78fhop0hujqgadct56pv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4eI6ajF9pAxxUAetyVB_qyK9n-3-ZMOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "46844007905-l52m7papjefq78fhop0hujqgadct56pv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
