@@ -16,7 +16,7 @@ const {max_header_text_color, sub_text_color,button_color} = COLOR_PALETTE
 //     previousPosition: () => number; 
 // } forwardRef<BottomSheetProps, BottomSheetRefProps>
 
-export const BottomSheet = (
+export const BottomSheet = forwardRef (
     ({sheetData}, ref) => {
     const translateY = useSharedValue(0);
     const active = useSharedValue(false);
@@ -96,7 +96,7 @@ export const BottomSheet = (
                 <View style={styles.profiling}>
                     <Text style={styles.profiling_text}>{sheetData.job_title}</Text>
                     <View style={styles.location}>
-                        <Image  style={{width: 20, height: 20}} source={require('../assets/2991231.png')}/>
+                        <Image  style={{width: 20, height: 20}} source={require('../../assets/2991231.png')}/>
                         <Text style={styles.loc_text}>
                             {sheetData.city}, {sheetData.state}
                         </Text>
@@ -124,7 +124,7 @@ export const BottomSheet = (
             </View>
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.button_b}>
-                    <Image  style={{width: 24, height: 24, marginRight: 3}} source={require('../assets/271220.png')}/>    
+                    <Image  style={{width: 24, height: 24, marginRight: 3}} source={require('../../assets/271220.png')}/>    
                 </TouchableOpacity> 
                 <TouchableOpacity style={styles.button}>
                     <Text style={styles.button_text}>Submit an application</Text>

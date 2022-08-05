@@ -1,10 +1,7 @@
-import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity, TextInput} from 'react-native'
+import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity} from 'react-native'
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated'
-import React, { useCallback, useState } from 'react'
-import AntIcon from 'react-native-vector-icons/AntDesign';
+import React, { useCallback } from 'react'
 
-import { Formik } from 'formik'
-import * as Yup from 'yup'
 import SignUp from './Sign_up.screen';
 import Login from './Log_in.screen';
 
@@ -22,17 +19,6 @@ export const Authentication = ({navigation}) => {
 
   const translateSX = useSharedValue(0);
   const stackIndex = useSharedValue(0);
-
-  // function to translate authentication screen
-  const translateSelf = useCallback(() => {
-    'worklet';
-    stackIndex.value = 0;
-    selftranslateX.value = withSpring(-SCREEN_WIDTH, {damping: 45})
-    
-    setTimeout(() => {
-      selfzIndex.value = 0
-    }, 1000)
-  }, [])
 
   const reanimatedSelfSheet = useAnimatedStyle(() => {
     return {

@@ -7,7 +7,7 @@ import Search from '../components/search.component'
 import JobCard from '../components/card.component'
 import { SAMPLE_DATA } from '../data/app.data'
 import { COLOR_PALETTE } from '../data/app.data'
-// import { BottomSheet, BottomSheetRefProps } from './Bottom.sheet'
+import { BottomSheet, BottomSheetRefProps } from './Bottom.sheet'
 import _ from 'lodash'
 
 const {height: Screen_Height} = Dimensions.get('window')
@@ -41,7 +41,7 @@ export default function ScrollableSheet() {
 
 
     // onPress code to reference bottomsheet component to show and hide bottomSheet
-    const ref = useRef<BottomSheetRefProps>(null);
+    const ref = useRef(null);
     const onPress = useCallback(
       (props) => {
         isSetText(props);
@@ -113,7 +113,7 @@ export default function ScrollableSheet() {
     </GestureDetector>
 
     {/* BottomSheet */}
-    {/* <BottomSheet ref={ref} sheetData={setText}/> */}
+    <BottomSheet ref={ref} sheetData={setText}/>
     </>
   )
 }
