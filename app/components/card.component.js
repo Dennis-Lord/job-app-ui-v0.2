@@ -16,7 +16,7 @@ export default function JobCard({onPress,job_title, payment_offer, id, logo}) {
                 <Text style={id == 1 ? styles_job_card.title_blue : styles_job_card.title} >{job_title}</Text>
                 <View style={styles_job_card.pricing_wrapper}>
                     <View style={styles_job_card.price_wrapper}>
-                        <Image style={{width: 14, height: 14}} source={require('../assets/2150150.png')}/>
+                        <Image style={{width: 14, height: 14}} source={require('../../assets/2150150.png')}/>
                     </View>
                     <Text style={id == 1 ? styles_job_card.pricing_blue : styles_job_card.pricing}>{payment_offer}</Text>
                 </View>

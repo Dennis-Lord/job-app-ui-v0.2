@@ -11,7 +11,7 @@ export default function Search({query}) {
   return (
     <View style={styles_search_component.container}>
         <View style={styles_search_component.wrapper}>
-        <Image  style={{width: 22, height: 22, marginHorizontal: 8}} source={require('../assets/149852.png')}/>
+        <Image  style={{width: 22, height: 22, marginHorizontal: 8}} source={require('../../assets/149852.png')}/>
             <TextInput
                 style={styles_search_component.t_input} 
                 placeholder='Search for a location...'

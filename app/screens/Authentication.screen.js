@@ -80,14 +80,14 @@ export const Authentication = ({navigation}) => {
   return (
     <Animated.View style={[self_styles.wrapper, reanimatedSelfSheet]}>
     <Animated.View style={[Auth.container, reanimatedAuthSheet]}>
-      <Image style={Auth.imageI} source={require('../assets/logo.png')}/>
+      <Image style={Auth.imageI} source={require('../../assets/logo.png')}/>
       <View style={Auth.wrapper}>
         <TouchableOpacity style={Auth.btn} onPress={() => 
         
         navigation.navigate('MainScreen')
         }>
           <Text style={Auth.btnText}>Continue with Google</Text>
-          <Image style={Auth.btnLogo} source={require('../assets/google_logo.png')}/>
+          <Image style={Auth.btnLogo} source={require('../../assets/google_logo.png')}/>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => trans('login')}>
           <Text style={Auth.logInBtn}>Log in</Text>

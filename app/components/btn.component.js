@@ -8,7 +8,7 @@ const {button_color} = COLOR_PALETTE
 export default function Btn() {
   return (
     <TouchableOpacity style={styles_btn.container}>
-      <Image style={{width: '60%', height: '60%'}} source={require('../assets/7472557.png')}/>        
+      <Image style={{width: '60%', height: '60%'}} source={require('../../assets/7472557.png')}/>        
     </TouchableOpacity>
   )
 }
