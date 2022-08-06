@@ -14,7 +14,7 @@ const MainScreen = ({navigation}) => {
     <View style={styles_main.container}>
         {/**Navigation header */}
       <View style={styles_main.header}>
-        <NavBtn />
+        <NavBtn navigation={navigation}/>
         <View style={styles_main.profile_wrapper}>
           <Image style={{width: '100%', height: '100%'}} source={require('../../assets/pexels-photo-1072179.jpeg')}/>
         </View>

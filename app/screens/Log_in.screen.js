@@ -1,10 +1,12 @@
-import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity, TextInput, Alert} from 'react-native'
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity, TextInput} from 'react-native'
 import Animated from 'react-native-reanimated'
 import React from 'react'
 import AntIcon from 'react-native-vector-icons/AntDesign';
 
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+// import auth from '@react-native-firebase/auth'
+
 
 const {height: SCREEN_HEIGHT} = Dimensions.get('window')
 const {width: SCREEN_WIDTH} = Dimensions.get('window')
@@ -16,11 +18,28 @@ const LoginSchema = Yup.object().shape({
     password: Yup.string().required().min(8, 'Password must have at least 8 characters'), 
   })
   
-  
 
   const onLogin = (email, password, navigation) => {
     const user = [email, password]     
       navigation.navigate('MainScreen');
+
+      // auth()
+      //   .createUserWithEmailAndPassword(email, password)
+      //   .then(() => {
+      //     console.log('User account created & signed in!');
+      //     navigation.navigate('MainScreen');
+      //   })
+      //   .catch(error => {
+      //     if (error.code === 'auth/email-already-in-use') {
+      //       console.log('That email address is already in use!');
+      //     }
+
+      //     if (error.code === 'auth/invalid-email') {
+      //       console.log('That email address is invalid!');
+      //     }
+      //     console.error(error)
+      //   }
+      // );
     }
 
 

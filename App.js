@@ -12,7 +12,7 @@ import Navigation from './app/navigation/navigation';
 
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'light';  
+  const isDarkMode = useColorScheme() === 'dark';  
 
   return (
     <GestureHandlerRootView style={{flex: 1}}>
@@ -27,7 +27,7 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#111',
+    backgroundColor: '#FFF',
   }
 });
 
