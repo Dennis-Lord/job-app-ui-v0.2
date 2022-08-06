@@ -7,15 +7,6 @@ import { COLOR_PALETTE } from '../data/app.data'
 const {height: SCREEN_HEIGHT} = Dimensions.get('window')
 const {max_header_text_color, sub_text_color,button_color} = COLOR_PALETTE
 
-// type BottomSheetProps = {
-//     sheetData?: object; 
-// }
-// export type BottomSheetRefProps = {
-//     scrollTo: (destination: number) => void;
-//     isActive: () => boolean;
-//     previousPosition: () => number; 
-// } forwardRef<BottomSheetProps, BottomSheetRefProps>
-
 export const BottomSheet = forwardRef (
     ({sheetData}, ref) => {
     const translateY = useSharedValue(0);
