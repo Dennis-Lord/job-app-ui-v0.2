@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity} from 'react-native'
-import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated'
+import Animated, { useAnimatedStyle, useSharedValue, withDecay, withSpring } from 'react-native-reanimated'
 import React, { useCallback } from 'react'
 
 import SignUp from './Sign_up.screen';
@@ -138,7 +138,7 @@ const Auth = StyleSheet.create({
         height: 50,
         width: 300,
         borderRadius: 30,
-        borderWidth: 1,
+        borderWidth: 1.2,
         borderColor: '#0D3665',
         flexDirection: 'row',
         alignItems: 'center',
@@ -153,36 +153,36 @@ const Auth = StyleSheet.create({
     },
     btnText: {
         color: '#0D3665',
-        fontSize: 16,
-        fontWeight: '600',
+        fontSize: 17,
+        fontWeight: '700',
     },
     logInBtn: {
       fontSize: 20,
-      fontWeight: '600',
+      fontWeight: '700',
       color: '#031D36',
       textAlign: 'center',
       marginTop: 12,
-      letterSpacing: -0.6
+      letterSpacing: 0.1
     },
     footer: {
       width: '100%',
       height: 30,
       position: 'absolute',
-      bottom: 10,
+      bottom: 1,
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center'
     },
     f_txt: {
-      fontSize: 16,
+      fontSize: 18,
       color: '#556777',
       paddingRight: 10,
       fontWeight: '600'
     },
     f__txt: {
-      fontSize: 16,
+      fontSize: 17,
       color: '#0099EA',
       paddingRight: 10,
-      fontWeight: '600'
+      fontWeight: '700'
     }
 })

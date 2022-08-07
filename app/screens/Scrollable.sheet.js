@@ -134,7 +134,7 @@ const styles_scrollable_sheet = StyleSheet.create({
     text_h1: {
         fontSize: 28,
         color: max_header_text_color,
-        fontWeight: '600',
+        fontWeight: '700',
         marginBottom: 20,
         marginHorizontal: 18
     },
@@ -147,12 +147,12 @@ const styles_scrollable_sheet = StyleSheet.create({
     text_h5: {
         fontSize: 18,
         color: sub_text_color,
-        fontWeight: '300',
+        fontWeight: '500',
         marginRight: 5,
     },
     text_h4: {
         fontSize: 18,
         color: sub_text_color,
-        fontWeight: '600',
+        fontWeight: '700',
     }
 })
