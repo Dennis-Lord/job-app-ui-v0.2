@@ -9,7 +9,7 @@ import * as Yup from 'yup'
 const {height: SCREEN_HEIGHT} = Dimensions.get('window')
 const {width: SCREEN_WIDTH} = Dimensions.get('window')
 
-const SignUp = ({navigation,reanimatedSignUPSheet, trans}) => {
+const SignUp = ({navigation}) => {
     // signUpSchema
     const  SignUpSchema = Yup.object().shape({
     username: Yup.string().required('Please set a username'), 
@@ -24,17 +24,16 @@ const SignUp = ({navigation,reanimatedSignUPSheet, trans}) => {
   }
 
   return (
-    <Animated.View style={[SignUp_styles.wrapper, reanimatedSignUPSheet]}>
+    <View style={SignUp_styles.wrapper}>
       <Formik 
       initialValues={{username: '', email: '', password: ''}}
       onSubmit={ values => {onSignUp(values.username, values.email, values.password, navigation)}}
         validateOnMount={true}
         validationSchema={SignUpSchema}
-      
-      >{({handleChange, handleSubmit, values, isValid}) => 
+      >{({handleChange, handleSubmit, values}) => 
       <>
         <View style={SignUp_styles.header}>
-            <TouchableOpacity style={SignUp_styles.back_btn} onPress={() => trans('goback')}>
+            <TouchableOpacity style={SignUp_styles.back_btn} onPress={() => navigation.goBack()}>
                   <AntIcon name={'arrowleft'} size={26} color='#000'/>
             </TouchableOpacity>
             <Text style={SignUp_styles.h_txt}>Create account</Text>
@@ -79,7 +78,7 @@ const SignUp = ({navigation,reanimatedSignUPSheet, trans}) => {
         </View>
         </>}
       </Formik>
-    </Animated.View> 
+    </View> 
   )
 }
 

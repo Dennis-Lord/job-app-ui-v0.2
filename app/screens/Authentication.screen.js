@@ -1,71 +1,13 @@
 import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity} from 'react-native'
-import Animated, { useAnimatedStyle, useSharedValue, withDecay, withSpring } from 'react-native-reanimated'
-import React, { useCallback } from 'react'
-
-import SignUp from './Sign_up.screen';
-import Login from './Log_in.screen';
+import React from 'react'
 
 const {height: SCREEN_HEIGHT} = Dimensions.get('window')
 const {width: SCREEN_WIDTH} = Dimensions.get('window')
 
-
-
 export const Authentication = ({navigation}) => {
-  // useSharedValue variables to hold translate value
-  const selftranslateX = useSharedValue(0);
-  const selfzIndex = useSharedValue(2);
-
-  const translateX = useSharedValue(0);
-
-  const translateSX = useSharedValue(0);
-  const stackIndex = useSharedValue(0);
-
-  const reanimatedSelfSheet = useAnimatedStyle(() => {
-    return {
-      transform: [{translateX: selftranslateX.value}],
-      zIndex: selfzIndex.value,
-    }
-  })
-
-  const trans = useCallback((value) => {
-    
-    if(value === 'sign') {
-      return translateSX.value = withSpring(-SCREEN_WIDTH, {damping: 30}),
-      translateX.value = withSpring(-SCREEN_WIDTH, {damping: 30})
-    }else if(value === 'login') {
-      return translateSX.value = withSpring(SCREEN_WIDTH * 2, {damping: 30}),
-      translateX.value = withSpring(SCREEN_WIDTH, {damping: 30})
-    }else if(value === 'goback') {
-      translateX.value = withSpring(0, {damping: 30})
-    }else if(value === 'back') { 
-      translateX.value = withSpring(0 , {damping: 30})
-    }
-  }, [])
-  
-
-  const reanimatedAuthSheet = useAnimatedStyle(() => {
-    return {
-      transform: [{translateX: translateX.value}],
-    }
-  })
-
- const reanimatedSignUPSheet = useAnimatedStyle(() => {
-   return {
-     transform: [{translateX: translateX.value}],
-     zIndex: stackIndex.value,
-   }
- })
-
- const reanimatedLoginSheet = useAnimatedStyle(() => {
-   return {
-     transform: [{translateX: translateX.value}],
-     zIndex: stackIndex.value,
-   }
- })
  
   return (
-    <Animated.View style={[self_styles.wrapper, reanimatedSelfSheet]}>
-    <Animated.View style={[Auth.container, reanimatedAuthSheet]}>
+    <View style={[Auth.container, reanimatedAuthSheet]}>
       <Image style={Auth.imageI} source={require('../../assets/logo.png')}/>
       <View style={Auth.wrapper}>
         <TouchableOpacity style={Auth.btn} onPress={() => 
@@ -75,48 +17,26 @@ export const Authentication = ({navigation}) => {
           <Text style={Auth.btnText}>Continue with Google</Text>
           <Image style={Auth.btnLogo} source={require('../../assets/google_logo.png')}/>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => trans('login')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
           <Text style={Auth.logInBtn}>Log in</Text>
         </TouchableOpacity>
       </View>
       <View style={Auth.footer}>
         <Text style={Auth.f_txt}>Don't have an account?</Text>
-        <TouchableOpacity onPress={() => trans('sign')}>
+        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
           <Text style={Auth.f__txt}>Sign up</Text>
         </TouchableOpacity>
       </View>
-    </Animated.View>
-  
-    {/** Sign up animated view */}
-
-    <SignUp reanimatedSignUPSheet={reanimatedSignUPSheet} trans={trans} navigation={navigation}/>
-
-
-    {/** Login animated view */}
-    <Login navigation={navigation} reanimatedLoginSheet={reanimatedLoginSheet} trans={trans} />
-
-    </Animated.View>
+    </View>
   )
 }
 
-const self_styles = StyleSheet.create({
-  wrapper: {
-    width: SCREEN_WIDTH,
-    height: SCREEN_HEIGHT,
-    position: 'absolute',
-    top: 1,
-    overflow: 'hidden',
-    borderRightWidth: 1,
-    borderRightColor: '#000',
-    backgroundColor: '#FFF'
-  }
-})
 
 
 const Auth = StyleSheet.create({
     container: {
-        width: '100%',
-        height: SCREEN_HEIGHT-16,
+        width: SCREEN_WIDTH,
+        height: SCREEN_HEIGHT,
         backgroundColor: '#FFF',
     },
     imageI: {

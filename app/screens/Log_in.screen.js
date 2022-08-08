@@ -11,7 +11,7 @@ import * as Yup from 'yup'
 const {height: SCREEN_HEIGHT} = Dimensions.get('window')
 const {width: SCREEN_WIDTH} = Dimensions.get('window')
 
-const Login = ({navigation, reanimatedLoginSheet, trans}) => {
+const Login = ({navigation}) => {
 // LoginSchema
 const LoginSchema = Yup.object().shape({ 
     email: Yup.string().email().required('An email is required'), 
@@ -44,7 +44,7 @@ const LoginSchema = Yup.object().shape({
 
 
   return (
-    <Animated.View style={[Login_styles.wrapper, reanimatedLoginSheet]}>
+    <View style={Login_styles.wrapper}>
       <Formik 
       initialValues={{email: '', password: ''}}
       onSubmit={values => onLogin(values.email, values.password, navigation)}
@@ -54,7 +54,7 @@ const LoginSchema = Yup.object().shape({
       >{({handleChange, handleSubmit, values}) => 
       <>
         <View style={Login_styles.header}>
-            <TouchableOpacity style={Login_styles.back_btn} onPress={() => trans('back')}>
+            <TouchableOpacity style={Login_styles.back_btn} onPress={() => navigation.goBack()}>
                   <AntIcon name={'arrowleft'} size={26} color='#000'/>
             </TouchableOpacity>
             <Text style={Login_styles.h_txt}>Login</Text>
@@ -92,7 +92,7 @@ const LoginSchema = Yup.object().shape({
         </View>
         </>}
       </Formik>
-    </Animated.View>
+    </View>
   )
 }
 
