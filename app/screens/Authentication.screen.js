@@ -7,7 +7,7 @@ const {width: SCREEN_WIDTH} = Dimensions.get('window')
 export const Authentication = ({navigation}) => {
  
   return (
-    <View style={[Auth.container, reanimatedAuthSheet]}>
+    <View style={Auth.container}>
       <Image style={Auth.imageI} source={require('../../assets/logo.png')}/>
       <View style={Auth.wrapper}>
         <TouchableOpacity style={Auth.btn} onPress={() => 
@@ -88,7 +88,7 @@ const Auth = StyleSheet.create({
       width: '100%',
       height: 30,
       position: 'absolute',
-      bottom: 1,
+      bottom: 5,
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center'

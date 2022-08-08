@@ -1,5 +1,4 @@
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity, TextInput} from 'react-native'
-import Animated from 'react-native-reanimated'
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity, TextInput, TextInputComponent} from 'react-native'
 import React from 'react'
 import AntIcon from 'react-native-vector-icons/AntDesign';
 
@@ -18,9 +17,8 @@ const SignUp = ({navigation}) => {
   })
 
   const onSignUp = (username, email, password, navigation) => {
-    const user = [username, email, password]     
+    const user = [username, email, password]
     navigation.navigate('MainScreen');
-    
   }
 
   return (
@@ -87,10 +85,6 @@ const SignUp_styles = StyleSheet.create({
         backgroundColor: '#FFF',
         width: SCREEN_WIDTH,
         height: SCREEN_HEIGHT,
-        position: 'absolute',
-        top: 1,
-        zIndex: 1,
-        left: SCREEN_WIDTH
     },
     header: {
         width: '100%',

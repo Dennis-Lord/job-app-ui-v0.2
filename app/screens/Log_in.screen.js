@@ -1,5 +1,4 @@
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity, TextInput} from 'react-native'
-import Animated from 'react-native-reanimated'
 import React from 'react'
 import AntIcon from 'react-native-vector-icons/AntDesign';
 
@@ -103,10 +102,6 @@ const Login_styles = StyleSheet.create({
         backgroundColor: '#FFF',
         width: SCREEN_WIDTH,
         height: SCREEN_HEIGHT,
-        position: 'absolute',
-        top: 1,
-        zIndex: 1,
-        right: SCREEN_WIDTH
     },
     header: {
         width: '100%',

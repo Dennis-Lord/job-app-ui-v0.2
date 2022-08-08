@@ -2,7 +2,6 @@ import { Dimensions, Image, StyleSheet, View } from 'react-native'
 import React from 'react'
 import NavBtn from '../components/nav_btn.component'
 import ScrollableSheet from './Scrollable.sheet'
-// import Icon from 'react-native-vector-icons/FontAwesome'
 import { COLOR_PALETTE } from '../data/app.data'
 
 const {add_button_color} = COLOR_PALETTE

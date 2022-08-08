@@ -20,7 +20,7 @@ const Navigation = () => {
        screenOptions= {{headerShown: false}}>
         <Stack.Screen name='AuthenticationScreen' component={Authentication}/>
         <Stack.Screen name='Login' component={Login}/>
-        <Stack.Screen name='SignUP' component={SignUp}/>
+        <Stack.Screen name='SignUp' component={SignUp}/>
         <Stack.Screen name='MainScreen' component={MainScreen}/>
       </Stack.Navigator>
     </NavigationContainer>

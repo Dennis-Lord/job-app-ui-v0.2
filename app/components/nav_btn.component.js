@@ -7,6 +7,7 @@ export default function NavBtn({navigation}) {
 
     // handle sign out
     function SignOut(navigation) {
+        return null
         // auth()
         // .signOut()
         // .then(() => {
