@@ -1,18 +1,32 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Alert } from 'react-native'
 import React from 'react'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-// import auth from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 
 export default function NavBtn({navigation}) {
 
     // handle sign out
     function SignOut(navigation) {
-        return null
-        // auth()
-        // .signOut()
-        // .then(() => {
-        //     navigation.navigate('AuthenticationScreen')
-        // });
+        Alert.alert(
+            "Log Out",
+            "Would you want to log out?",
+            [
+              {
+                text: "Cancel",
+                onPress: () => null,
+              },
+              { text: "Log out", onPress: () => 
+                auth()
+                .signOut()
+                .then(() => {
+                    navigation.navigate('AuthenticationScreen')
+                }).catch((err) => {
+                    navigation.navigate('AuthenticationScreen')
+                })
+            }
+            ]
+          );
+        
     }
 
   return (

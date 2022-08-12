@@ -1,10 +1,17 @@
 import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity} from 'react-native'
 import React from 'react'
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const {height: SCREEN_HEIGHT} = Dimensions.get('window')
 const {width: SCREEN_WIDTH} = Dimensions.get('window')
 
+GoogleSignin.configure({
+  webClientId: '46844007905-l52m7papjefq78fhop0hujqgadct56pv.apps.googleusercontent.com',
+});
+
 export const Authentication = ({navigation}) => {
+
+  
  
   return (
     <View style={Auth.container}>
