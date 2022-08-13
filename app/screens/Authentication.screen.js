@@ -1,25 +1,75 @@
 import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity} from 'react-native'
-import React from 'react'
+import React, {useState} from 'react'
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth'
+import Animated,  { useAnimatedStyle, useSharedValue} from 'react-native-reanimated'
+import SuccessComponent from '../components/success.component';
+import ErrorComponent from '../components/error.component';
 
-const {height: SCREEN_HEIGHT} = Dimensions.get('window')
 const {width: SCREEN_WIDTH} = Dimensions.get('window')
-
-GoogleSignin.configure({
-  webClientId: '46844007905-l52m7papjefq78fhop0hujqgadct56pv.apps.googleusercontent.com',
-});
+export const {height: SCREEN_HEIGHT} = Dimensions.get('window')
+export const topPos = (SCREEN_HEIGHT / SCREEN_HEIGHT) - 100
 
 export const Authentication = ({navigation}) => {
+  // error message state variable
+  const [err, setErr] = useState('')
+  const pos_show = 100 // variable to translate error component
 
+  GoogleSignin.configure({
+    webClientId: '46844007905-l52m7papjefq78fhop0hujqgadct56pv.apps.googleusercontent.com',
+  });
   
+  async function onGoogleButtonPress() {
+    // Get the users ID token
+    const { idToken } = await GoogleSignin.signIn();
+  
+    // Create a Google credential with the token
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+  
+    // Sign-in the user with the credential
+    auth().signInWithCredential(googleCredential)
+  }
+
+  // handle animation to toggle error
+
+  const handlePromiseRejection = (reject) => {
+    if (reject === '7') {
+      setErr('Network Error!')
+      pos_value.value = pos_show;
+      setTimeout(() => {
+        pos_value.value = topPos;
+      }, 3080)
+  }}
+
+  // handle animation to toggle error
+  const pos_value = useSharedValue(0)
+
+  const reanimatedErrorMessage = useAnimatedStyle(() => {
+      const translateY = pos_value.value;
+      return {
+          transform: [{translateY: translateY,}],
+      }
+  })
  
   return (
     <View style={Auth.container}>
+      <Animated.View style={[Auth.error_view, reanimatedErrorMessage]}>
+        {err === 'Success!' || err === 'Account created!' ? 
+        <SuccessComponent success_message={err}/>
+        :
+        <ErrorComponent error_message={err}/>
+      }
+      </Animated.View>
       <Image style={Auth.imageI} source={require('../../assets/logo.png')}/>
       <View style={Auth.wrapper}>
         <TouchableOpacity style={Auth.btn} onPress={() => 
-        
-        navigation.navigate('MainScreen')
+        onGoogleButtonPress().then(
+          () => {
+            navigation.navigate('MainScreen')
+          }, (reject) => {
+            handlePromiseRejection(reject.code)
+          }
+        )
         }>
           <Text style={Auth.btnText}>Continue with Google</Text>
           <Image style={Auth.btnLogo} source={require('../../assets/google_logo.png')}/>
@@ -111,5 +161,13 @@ const Auth = StyleSheet.create({
       color: '#0099EA',
       paddingRight: 10,
       fontWeight: '700'
-    }
+    },
+    error_view:{
+      width: '85%',
+      minHeight: 50,
+      position: 'absolute',
+      top: topPos ,
+      zIndex: 1,
+      alignSelf: 'center'
+  }
 })

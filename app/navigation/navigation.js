@@ -1,8 +1,11 @@
 // navigation
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
+// firebase imports
+import auth from '@react-native-firebase/auth'
 
 // screen imports
 import { Authentication } from '../screens/Authentication.screen'
@@ -13,10 +16,33 @@ import SignUp from '../screens/Sign_up.screen'
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
+  const [screenName, setScreenName] = useState('AuthenticationScreen')
+
+// Set an initializing state whilst Firebase connects
+const [initializing, setInitializing] = useState(true);
+const [user, setUser] = useState();
+
+// Handle user state changes
+const onAuthStateChanged = (user) => {
+  setUser(user);
+  if (initializing) {setInitializing(false);}
+}
+
+useEffect(() => {
+  const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+  return subscriber; // unsubscribe on unmount
+}, []);
+
+if (initializing) return null;
+
+if(user) {
+  setScreenName('MainScreen')
+}
+
   return (
     <NavigationContainer>
     <Stack.Navigator 
-       initialRouteName='AuthenticationScreen' 
+       initialRouteName={screenName} 
        screenOptions= {{headerShown: false}}>
         <Stack.Screen name='AuthenticationScreen' component={Authentication}/>
         <Stack.Screen name='Login' component={Login}/>
