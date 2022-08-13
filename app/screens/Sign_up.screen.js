@@ -31,8 +31,7 @@ const [pos_show, setPos_show] = useState(topPos) // variable to translate error 
             setPos_show(100)
             setTimeout(() => {
               setPos_show(0)
-            navigation.navigate('MainScreen')
-          }, 1080)
+            }, 1080)
         })
         .catch(error => {
           if (error.code === 'auth/email-already-in-use') {

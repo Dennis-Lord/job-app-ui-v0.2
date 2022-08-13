@@ -29,10 +29,6 @@ const LoginSchema = Yup.object().shape({
         .then(() => {
             setErr('Success!')
             setPos_show(100)
-            setTimeout(() => {
-            setPos_show(0)
-            navigation.navigate('MainScreen')
-          }, 1080)
         })
         .catch(error => {
           if (error.code === 'auth/user-not-found') {
@@ -62,8 +58,7 @@ const LoginSchema = Yup.object().shape({
     <Animated.View style={Login_styles.wrapper}>
       <Formik 
       initialValues={{email: '', password: ''}}
-      onSubmit={values => onLogin(values.email, values.password, navigation)
-      }
+      onSubmit={values => onLogin(values.email, values.password, navigation)}
       validateOnMount={true}
       validationSchema={LoginSchema}
       

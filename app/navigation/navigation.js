@@ -16,8 +16,6 @@ import SignUp from '../screens/Sign_up.screen'
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
-  const [screenName, setScreenName] = useState('AuthenticationScreen')
-
 // Set an initializing state whilst Firebase connects
 const [initializing, setInitializing] = useState(true);
 const [user, setUser] = useState();
@@ -35,22 +33,28 @@ useEffect(() => {
 
 if (initializing) return null;
 
-if(user) {
-  setScreenName('MainScreen')
-}
-
+if(!user) {
   return (
     <NavigationContainer>
     <Stack.Navigator 
-       initialRouteName={screenName} 
+       initialRouteName={'AuthenticationScreen'} 
        screenOptions= {{headerShown: false}}>
         <Stack.Screen name='AuthenticationScreen' component={Authentication}/>
         <Stack.Screen name='Login' component={Login}/>
         <Stack.Screen name='SignUp' component={SignUp}/>
-        <Stack.Screen name='MainScreen' component={MainScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
     )
+  }else {
+    return (
+      <NavigationContainer>
+      <Stack.Navigator 
+         initialRouteName={'MainScreen'} 
+         screenOptions= {{headerShown: false}}>
+          <Stack.Screen name='MainScreen' component={MainScreen}/>
+        </Stack.Navigator>
+      </NavigationContainer>)
+  }
 }
 
 export default Navigation

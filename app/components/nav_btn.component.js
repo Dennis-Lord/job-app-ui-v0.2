@@ -18,10 +18,8 @@ export default function NavBtn({navigation}) {
               { text: "Log out", onPress: () => 
                 auth()
                 .signOut()
-                .then(() => {
-                    navigation.navigate('AuthenticationScreen')
-                }).catch((err) => {
-                    navigation.navigate('AuthenticationScreen')
+                .catch((err) => {
+                    console.log(err)
                 })
             }
             ]
